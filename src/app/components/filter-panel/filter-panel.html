@@ -1,0 +1,57 @@
+<div class="filter-panel">
+  <div class="filter-panel__author">
+    <label class="filter-panel__label">Автор</label>
+    <div class="filter-panel__author-input">
+      <input
+        type="text"
+        placeholder="Имя или должность"
+        [ngModel]="author()"
+        (ngModelChange)="author.set($event)"
+      />
+      <button class="filter-panel__author-btn" aria-label="Пользователь">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#2196F3"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="filter-panel__checkboxes">
+    <label class="filter-panel__checkbox">
+      <input type="checkbox" [ngModel]="isMember()" (ngModelChange)="isMember.set($event)" />
+      <span class="filter-panel__checkmark"></span>
+      <span>Я участник</span>
+    </label>
+    <label class="filter-panel__checkbox">
+      <input type="checkbox" [ngModel]="strictSearch()" (ngModelChange)="strictSearch.set($event)" />
+      <span class="filter-panel__checkmark"></span>
+      <span>Строгий поиск</span>
+    </label>
+    <label class="filter-panel__checkbox">
+      <input type="checkbox" [ngModel]="inHeaders()" (ngModelChange)="inHeaders.set($event)" />
+      <span class="filter-panel__checkmark"></span>
+      <span>В заголовках</span>
+    </label>
+  </div>
+
+  <div class="filter-panel__only">
+    <div class="filter-panel__only-title">Только</div>
+    <div class="filter-panel__only-options">
+      <label class="filter-panel__checkbox">
+        <input type="checkbox" [ngModel]="onlyTags()" (ngModelChange)="onlyTags.set($event)" />
+        <span class="filter-panel__checkmark"></span>
+        <span>Теги</span>
+      </label>
+      <label class="filter-panel__checkbox">
+        <input type="checkbox" [ngModel]="onlyRequests()" (ngModelChange)="onlyRequests.set($event)" />
+        <span class="filter-panel__checkmark"></span>
+        <span>Просьбы</span>
+      </label>
+      <label class="filter-panel__checkbox">
+        <input type="checkbox" [ngModel]="onlyContacts()" (ngModelChange)="onlyContacts.set($event)" />
+        <span class="filter-panel__checkmark"></span>
+        <span>Контакты</span>
+      </label>
+    </div>
+  </div>
+</div>

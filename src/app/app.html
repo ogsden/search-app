@@ -1,0 +1,28 @@
+<app-header
+  (searchClick)="onSearchActivated()"
+  (backClick)="onSearchDeactivated()"
+/>
+
+@if (searchActive()) {
+  <div class="mobile-search-panel" @slideDown>
+    <app-search-bar (focused)="onSearchFocused()" />
+    @if (filterVisible()) {
+      <app-filter-panel />
+    }
+  </div>
+}
+
+@if (searchActive()) {
+  <div class="desktop-filter-section" (click)="$event.stopPropagation()">
+    @if (filterVisible()) {
+      <div class="desktop-filter-row" @slideDown>
+        <div class="desktop-filter-left">
+          <app-search-history />
+        </div>
+        <div class="desktop-filter-right">
+          <app-filter-panel />
+        </div>
+      </div>
+    }
+  </div>
+}

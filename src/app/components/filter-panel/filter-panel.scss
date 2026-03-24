@@ -1,0 +1,145 @@
+:host {
+  display: block;
+}
+
+.filter-panel {
+  &__author {
+    margin-bottom: 12px;
+  }
+
+  &__label {
+    display: block;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+
+  &__author-input {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
+
+    input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text);
+      background: transparent;
+
+      &::placeholder {
+        color: var(--text-secondary);
+      }
+    }
+  }
+
+  &__author-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    margin-bottom: 16px;
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text);
+    user-select: none;
+
+    input[type='checkbox'] {
+      display: none;
+    }
+  }
+
+  &__checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.15s, border-color 0.15s;
+
+    input:checked + & {
+      background: var(--primary);
+      border-color: var(--primary);
+
+      &::after {
+        content: '';
+        display: block;
+        width: 5px;
+        height: 9px;
+        border: solid #fff;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        margin-bottom: 2px;
+      }
+    }
+  }
+
+  &__only {
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+
+  &__only-title {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  &__only-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .filter-panel {
+    &__checkboxes {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__only-options {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__checkmark {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+
+      input:checked + & {
+        background: #4CAF50;
+        border-color: #4CAF50;
+
+        &::after {
+          width: 6px;
+          height: 10px;
+        }
+      }
+    }
+  }
+}

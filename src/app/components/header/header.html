@@ -1,0 +1,124 @@
+<header class="header-mobile">
+  <div class="header-mobile__bar">
+    @if (!mobileSearchOpen()) {
+      <button class="header-mobile__icon-btn" aria-label="Меню">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="#fff"/>
+        </svg>
+      </button>
+
+      <div class="header-mobile__spacer"></div>
+
+      <button class="header-mobile__icon-btn" aria-label="Добавить">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="#fff"/>
+        </svg>
+      </button>
+      <button class="header-mobile__icon-btn" aria-label="История">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="#fff"/>
+        </svg>
+      </button>
+    }
+
+    @if (mobileSearchOpen()) {
+      <button
+        class="header-mobile__icon-btn"
+        aria-label="Назад"
+        (click)="onMobileSearchClose()"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="#fff"/>
+        </svg>
+      </button>
+
+      <input
+        type="text"
+        class="header-mobile__search-input"
+        placeholder="Поиск"
+        autofocus
+        [@searchExpand]="'expanded'"
+      />
+    }
+
+    <button
+      class="header-mobile__icon-btn"
+      aria-label="Поиск"
+      (click)="onMobileSearchToggle()"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#fff"/>
+      </svg>
+    </button>
+
+    <button class="header-mobile__icon-btn" aria-label="Уведомления">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" fill="#fff"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<header class="header-desktop">
+  <div class="header-desktop__bar">
+    @if (!desktopSearchOpen()) {
+      <nav class="header-desktop__nav">
+        @for (item of navItems; track item.label) {
+          <a class="header-desktop__nav-item">
+            <svg class="header-desktop__nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+              @switch (item.icon) {
+                @case ('link') {
+                  <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="#fff"/>
+                }
+                @case ('contacts') {
+                  <path d="M20 0H4v2h16V0zM4 24h16v-2H4v2zM20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 2.75c1.24 0 2.25 1.01 2.25 2.25s-1.01 2.25-2.25 2.25S9.75 10.24 9.75 9s1.01-2.25 2.25-2.25zM17 17H7v-1.5c0-1.67 3.33-2.5 5-2.5s5 .83 5 2.5V17z" fill="#fff"/>
+                }
+                @case ('tag') {
+                  <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16z" fill="#fff"/>
+                }
+                @case ('star') {
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="#fff"/>
+                }
+                @case ('visibility') {
+                  <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="#fff"/>
+                }
+              }
+            </svg>
+            <span>{{ item.label }}</span>
+          </a>
+        }
+      </nav>
+    } @else {
+      <div class="header-desktop__search">
+        <input
+          type="text"
+          class="header-desktop__search-input"
+          placeholder="Поисковый запрос"
+          (focus)="onDesktopSearchFocus()"
+        />
+        <button class="header-desktop__search-btn">Найти</button>
+      </div>
+    }
+
+    <div class="header-desktop__actions">
+      @if (!desktopSearchOpen()) {
+        <button class="header-desktop__icon-btn" aria-label="Поиск">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#fff"/>
+          </svg>
+        </button>
+      }
+      <button class="header-desktop__icon-btn" aria-label="Добавить" (click)="onDesktopSearchToggle()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="#fff"/>
+        </svg>
+      </button>
+      <button class="header-desktop__icon-btn header-desktop__icon-btn--notification" aria-label="Уведомления">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" fill="#fff"/>
+        </svg>
+        <span class="header-desktop__badge">32</span>
+      </button>
+    </div>
+  </div>
+</header>

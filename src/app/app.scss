@@ -1,0 +1,49 @@
+:host {
+  display: block;
+}
+
+.mobile-search-panel {
+  display: none;
+  padding: 8px 16px 16px;
+  background: var(--white);
+}
+
+.desktop-filter-section {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .mobile-search-panel {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-search-panel {
+    display: none;
+  }
+
+  .desktop-filter-section {
+    display: block;
+  }
+
+  .desktop-filter-row {
+    display: flex;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    gap: 0;
+  }
+
+  .desktop-filter-left {
+    flex: 0 0 auto;
+    min-width: 180px;
+    padding-right: 24px;
+    border-right: 1px solid var(--border);
+  }
+
+  .desktop-filter-right {
+    flex: 1;
+    padding-left: 24px;
+  }
+}
