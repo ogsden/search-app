@@ -25,20 +25,6 @@
 - SCSS
 - Angular Animations
 
-## Структура компонентов
-
-```
-app/
-├── components/
-│   ├── header/          — шапка (мобильная + десктопная)
-│   ├── search-bar/      — строка поиска с кнопкой
-│   ├── filter-panel/    — фильтры (автор, чекбоксы, секция "Только")
-│   └── search-history/  — история поиска (десктоп)
-├── app.ts               — корневой компонент
-├── app.html             — шаблон с responsive layout
-└── app.scss             — стили layout
-```
-
 ## Запуск
 
 ```bash
